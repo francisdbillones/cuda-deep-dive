@@ -1,4 +1,4 @@
-Colab link: https://colab.research.google.com/drive/12SFrb376iZtm3kQbbvNsq-D86lJ51s1X?usp=sharing
+Colab link: [https://colab.research.google.com/drive/12SFrb376iZtm3kQbbvNsq-D86lJ51s1X?usp=sharing](https://colab.research.google.com/drive/1q0mjp35oq4B1Os9uwkZrlmLaN5VaEQSk?usp=sharing)
 # ASUM: Sum of Absolute Values
 
 ASUM computes the sum of the absolute values of a vector of `n` double-precision floats:
