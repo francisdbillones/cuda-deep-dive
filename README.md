@@ -36,3 +36,23 @@ $$
 | CUDA Prefetch |  |  |
 | CUDA Prefetch+page creation |  |  |
 | CUDA Prefetch+Page creation+memadvise |  |  |
+
+### Differences between SIMD and SIMT in handling parallelism
+
+### PROS and CONS of using SIMD and SIMT
+
+### How does block size affect execution time (observing various elements and using max blocks)?  Which block size will you recommend?
+
+
+### Is prefetching always recommended, or should CUDA manage memory?
+
+
+### Between SIMD and SIMT, which one is faster? 
+
+## Problems Encountered and AHA Moments
+
+### Problems
+
+### AHA Moments
+
+## Conclusion
