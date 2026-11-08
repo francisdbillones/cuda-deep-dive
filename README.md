@@ -37,7 +37,7 @@ $$
 | CUDA Prefetch+page creation |  |  |
 | CUDA Prefetch+Page creation+memadvise |  |  |
 
-### Differences between SIMD and SIMT in handling parallelism
+### SIMD vs SIMT in handling parallelism
 
 ### PROS and CONS of using SIMD and SIMT
 
