@@ -41,13 +41,13 @@ $$
 
 ### PROS and CONS of using SIMD and SIMT
 
-### How does block size affect execution time (observing various elements and using max blocks)?  Which block size will you recommend?
+### How block size affects execution time and recommendation
 
 
 ### Is prefetching always recommended, or should CUDA manage memory?
 
 
-### Between SIMD and SIMT, which one is faster? 
+### SIMD vs SIMT
 
 ## Problems Encountered and AHA Moments
 
