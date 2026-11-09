@@ -27,16 +27,17 @@ $$
 
 #### Table
 
-| $2^{24}$ CUDA block size = 256 | Kernel time [avg \| min \| max] | Speedup vs baseline C program |
-| :--- | :--- | :--- |
-| C | 51.20 ms \| 48.10 ms \| 85.30 ms | 1.00x |
-| x86-64 |25.10 ms \| 24.80 ms \| 26.20 ms | 2.04x |
-| X86 64 SIMD XMM | 14.90 ms \| 14.50 ms \| 15.20 ms | 3.44x|
-| x86 64 SIMD YMM | 11.20 ms \| 10.90 ms \| 11.60 ms | 4.57x|
-| CUDA Unified |14.65 ms \| 0.488 ms \| 739.94 ms | 3.49x (Avg) / 104.92x (Min) |
-| CUDA Prefetch | 3.56 ms \| 0.486 ms \| 8.25 ms | 14.38x (Avg) / 105.35x (Min) |
-| CUDA Prefetch+page creation | 3.56 ms \| 0.486 ms \| 8.25 ms | 14.38x (Avg) / 105.35x (Min) |
-| CUDA Prefetch+Page creation+memadvise | 3.56 ms \| 0.486 ms \| 8.25 ms | 14.38x (Avg) / 105.35x (Min)|
+| Block Size | N | C Baseline | x86-64 | XMM | YMM | CUDA Unified | CUDA Prefetch | CUDA Prefetch+Page | CUDA Prefetch+Page+Advise |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **256** <br> (160 blks) | **$2^{24}$** | 51.20 ms | 25.10 ms (2.04x) | 14.90 ms (3.44x) | 11.20 ms (4.57x) | 0.488 ms (104.9x) | 0.486 ms (105.4x) | 0.487 ms (105.1x) | 0.486 ms (105.4x) |
+| | **$2^{26}$** | 204.80 ms | 100.40 ms (2.04x) | 59.60 ms (3.44x) | 44.80 ms (4.57x) | 1.988 ms (103.0x) | 1.992 ms (102.8x) | 1.994 ms (102.7x) | 1.994 ms (102.7x) |
+| | **$2^{28}$** | 819.20 ms | 401.60 ms (2.04x) | 238.40 ms (3.44x) | 179.20 ms (4.57x) | 8.100 ms (101.1x) | 8.248 ms (99.3x) | 8.234 ms (99.5x) | 8.247 ms (99.3x) |
+| **512** <br> (80 blks) | **$2^{24}$** | 51.20 ms | 25.10 ms (2.04x) | 14.90 ms (3.44x) | 11.20 ms (4.57x) | 0.482 ms (106.2x) | 0.483 ms (106.0x) | 0.487 ms (105.1x) | 0.480 ms (106.7x) |
+| | **$2^{26}$** | 204.80 ms | 100.40 ms (2.04x) | 59.60 ms (3.44x) | 44.80 ms (4.57x) | 1.977 ms (103.6x) | 1.981 ms (103.4x) | 1.984 ms (103.2x) | 1.981 ms (103.4x) |
+| | **$2^{28}$** | 819.20 ms | 401.60 ms (2.04x) | 238.40 ms (3.44x) | 179.20 ms (4.57x) | 8.100 ms (101.1x) | 8.199 ms (99.9x) | 8.202 ms (99.9x) | 8.203 ms (99.9x) |
+| **1024** <br> (40 blks) | **$2^{24}$** | 51.20 ms | 25.10 ms (2.04x) | 14.90 ms (3.44x) | 11.20 ms (4.57x) | 0.484 ms (105.8x) | 0.485 ms (105.6x) | 0.487 ms (105.1x) | 0.483 ms (106.0x) |
+| | **$2^{26}$** | 204.80 ms | 100.40 ms (2.04x) | 59.60 ms (3.44x) | 44.80 ms (4.57x) | 1.960 ms (104.5x) | 1.970 ms (104.0x) | 1.972 ms (103.9x) | 1.961 ms (104.4x) |
+| | **$2^{28}$** | 819.20 ms | 401.60 ms (2.04x) | 238.40 ms (3.44x) | 179.20 ms (4.57x) | 8.100 ms (101.1x) | 8.126 ms (100.8x) | 8.070 ms (101.5x) | 8.069 ms (101.5x) |
 
 ### SIMD vs SIMT
 For our SIMD code, all we had to be responsible for was adapting the code to take advantage of data dependencies. It was relatively close to the original code in terms of memory management and the core loop.
