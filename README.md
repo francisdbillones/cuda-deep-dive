@@ -22,12 +22,16 @@ $$
 | # of runs | 30 
 
 ## Program Output
+Variant 2 Baseline grid-stride CUDA kernel:
 ![variant21_output](output/var2_1.PNG)
 ![variant22_output](output/var2_2.PNG)
+Variant 3 Baseline grid-stride CUDA kernel:
 ![variant31_output](output/var3_1.PNG)
 ![variant32_output](output/var3_2.PNG)
+Variant 4 Grid-stride CUDA kernel with prefetching, page-creation:
 ![variant41_output](output/var4_1.PNG)
 ![variant42_output](output/var4_2.PNG)
+Variant 5 Grid-stride CUDA kernel with prefetching, page-creation, and mem-advise:
 ![variant51_output](output/var5_1.PNG)
 ![variant52_output](output/var5_2.PNG)
 
