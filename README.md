@@ -7,6 +7,9 @@ $$
 \text{asum} = \sum_{i=0}^{n-1} |A_i|
 $$
 
+## AI Declaration
+
+We used AI tools only to format the Markdown tables in this report and to write the Python code used to generate the plots.
 
 ## Benchmark Setup
 
