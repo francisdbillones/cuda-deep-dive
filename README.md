@@ -39,7 +39,12 @@ Variant 5 Grid-stride CUDA kernel with prefetching, page-creation, and mem-advis
 ## Analysis
 
 ![Execution Time Log Scale Output](output/graph1.png)
+We can see here that for all the CUDA kernels, the only one that demonstrates any significant change is going from the baseline to prefetch on Run 0.
+
+
 ![Steady State GPU Kernel Output](output/graph2.png)
+After Run 0, all the kernels exhibit the same performance, and any differences can be attributed to statistical noise.
+
 
 #### Table
 
