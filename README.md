@@ -25,9 +25,8 @@ $$
 
 ## Analysis
 
-![gaph1 output](output/gaph1.png)
-
-![gaph2 output](output/gaph2.png)
+![Execution Time Log Scale Output](output/graph1.png)
+![Steady State GPU Kernel Output](output/graph2.png)
 
 #### Table
 
