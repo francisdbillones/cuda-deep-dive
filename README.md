@@ -18,7 +18,7 @@ $$
 | GPU | NVIDIA Tesla T4 |
 | Cache | L1d 32 KiB, L1i 32 KiB, L2 1 MiB, L3 38.5 MiB |
 | RAM | 12.7 GiB (12975 MiB) |
-| Vector init | |
+| Vector init | `A[i] = (i % 1000) - 500` |
 | # of runs | 30 
 
 ## Program Output
