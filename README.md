@@ -55,6 +55,24 @@ Variant 5 Grid-stride CUDA kernel with prefetching, page-creation, and mem-advis
 | | **$2^{26}$** | 204.80 ms | 100.40 ms (2.04x) | 59.60 ms (3.44x) | 44.80 ms (4.57x) | 1.960 ms (104.5x) | 1.968 ms (104.1x) | 1.973 ms (103.8x) | 1.960 ms (104.5x) |
 | | **$2^{28}$** | 819.20 ms | 401.60 ms (2.04x) | 238.40 ms (3.44x) | 179.20 ms (4.57x) | 8.100 ms (101.1x) | 8.143 ms (100.6x) | 8.128 ms (100.8x) | 8.080 ms (101.4x) |
 
+#### Effective Memory Bandwidth
+
+The effective bandwidth is computed from the steady-state kernel times above as $\text{BW} = \frac{8N \text{ bytes}}{t}$, since each element of `A` is a `double` read exactly once (the writes to `out` are negligible). Percentages are relative to the T4's theoretical peak of 320 GB/s.
+
+| Block Size | N | Bytes Read | CUDA Unified | CUDA Prefetch | CUDA Prefetch+Page | CUDA Prefetch+Page+Advise |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **256** | **$2^{24}$** | 134 MB | 279.0 GB/s (87%) | 276.2 GB/s (86%) | 275.6 GB/s (86%) | 276.7 GB/s (86%) |
+| | **$2^{26}$** | 537 MB | 269.2 GB/s (84%) | 269.8 GB/s (84%) | 269.5 GB/s (84%) | 269.8 GB/s (84%) |
+| | **$2^{28}$** | 2.15 GB | 265.1 GB/s (83%) | 259.8 GB/s (81%) | 260.7 GB/s (81%) | 258.7 GB/s (81%) |
+| **512** | **$2^{24}$** | 134 MB | 277.9 GB/s (87%) | 277.9 GB/s (87%) | 277.3 GB/s (87%) | 279.6 GB/s (87%) |
+| | **$2^{26}$** | 537 MB | 271.3 GB/s (85%) | 271.0 GB/s (85%) | 270.3 GB/s (84%) | 272.2 GB/s (85%) |
+| | **$2^{28}$** | 2.15 GB | 265.1 GB/s (83%) | 260.8 GB/s (82%) | 262.0 GB/s (82%) | 262.5 GB/s (82%) |
+| **1024** | **$2^{24}$** | 134 MB | 275.0 GB/s (86%) | 276.2 GB/s (86%) | 276.2 GB/s (86%) | 278.5 GB/s (87%) |
+| | **$2^{26}$** | 537 MB | 273.9 GB/s (86%) | 272.8 GB/s (85%) | 272.1 GB/s (85%) | 273.9 GB/s (86%) |
+| | **$2^{28}$** | 2.15 GB | 265.1 GB/s (83%) | 263.7 GB/s (82%) | 264.2 GB/s (83%) | 265.8 GB/s (83%) |
+
+Every configuration sustains 81–87% of peak DRAM bandwidth.
+
 
 ### SIMD vs SIMT
 For our SIMD code, all we had to be responsible for was adapting the code to take advantage of data dependencies. It was relatively close to the original code in terms of memory management and the core loop.
