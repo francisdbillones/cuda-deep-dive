@@ -12,11 +12,12 @@ $$
 
 | | |
 | :--- | :--- |
-| Machine | |
-| OS |  |
-| CPU | |
-| Cache | |
-| RAM | |
+| Machine | Google Colab (Google Compute Engine VM, KVM) |
+| OS | Ubuntu 24.04.5 LTS x86_64, Linux kernel 6.6.159+ |
+| CPU | Intel Xeon @ 2.00GHz (Skylake-SP, family 6 model 85), 1 core / 2 threads, AVX2 + AVX-512 |
+| GPU | NVIDIA Tesla T4 |
+| Cache | L1d 32 KiB, L1i 32 KiB, L2 1 MiB, L3 38.5 MiB |
+| RAM | 12.7 GiB (12975 MiB) |
 | Vector init | |
 | # of runs | 30 
 
