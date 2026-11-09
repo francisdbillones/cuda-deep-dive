@@ -25,6 +25,10 @@ $$
 
 ## Analysis
 
+![gaph1 output](output/gaph1.png)
+
+![gaph2 output](output/gaph2.png)
+
 #### Table
 
 | Block Size | N | C Baseline | x86-64 | XMM | YMM | CUDA Unified | CUDA Prefetch | CUDA Prefetch+Page | CUDA Prefetch+Page+Advise |
