@@ -79,4 +79,6 @@ We can see that the code that defers memory management to CUDA performs on par w
 
 ### AHA Moments
 
+Changing from 256 to 1024 threads didn't make the code run any faster (~0.48 ms for $N = 2^{24}$). Extra threads are helpful for heavy math work, but once the GPU memory maxes out, adding threads makes no difference.
+
 ## Conclusion
