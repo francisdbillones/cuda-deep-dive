@@ -64,7 +64,9 @@ For SIMT however, we had to be responsible for memory management and syncing sta
 This means that, while properly taking advantage of SIMT reaps great rewards in latency and throughput (as demonstrated by the speedup), it results in a much more complex and harder to refactor codebase.
 
 ### How block size affects execution time and recommendation
-Across all tested block sizes (256, 512, and 1024 threads per block), the block size had virtually no effect on steady-state kernel execution time (~0.48 ms for $2^{24}$, ~1.98 ms for $2^{26}$, and ~8.10 ms for $2^{28}$)
+Across all tested block sizes (256, 512, and 1024 threads per block), the block size had virtually no effect on steady-state kernel execution time (~0.48 ms for $2^{24}$, ~1.98 ms for $2^{26}$, and ~8.10 ms for $2^{28}$). Since ASUM performs relatively simple arithmetic operations compared to the amount of data it processes, its performance is likely limited by memory bandwidth rather than computational throughput. Based on the results, increasing the block size from 256 to 512 or 1024 threads does not provide a noticeable performance improvement, suggesting that additional threads are not helping to increase memory throughput.
+
+We recommend 256 threads per block as a practical configuration since it achieves nearly identical execution times to the larger block sizes while allowing more blocks to be resident across the GPU's 40 streaming multiprocessors. Since larger block sizes offer no consistent performance advantage, 256 threads provides a reasonable balance between resource utilization and execution time. 
 
 
 ### Is prefetching always recommended, or should CUDA manage memory?
