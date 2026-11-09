@@ -77,8 +77,15 @@ We can see that the code that defers memory management to CUDA performs on par w
 
 ### Problems
 
+We took parallel reduction kernel from this [https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf](slide deck from Nvidia), but it wasn't adapted for `blockSize >= 1024`. We added an additional step to the code to account for the possibility of `blockSize >= 1024`.
+
+
 ### AHA Moments
 
-Increasing from 256 to 1024 threads didn't make the code run any faster (~0.48 ms for $N = 2^{24}$). Extra threads are helpful for heavy math work, but once the GPU memory maxes out, adding threads doesn't make much difference.
+We noticed that for Run >= 1, all the variants performed basically the same. This is proven by our graphs above that show that their runtimes look like random noise. The only noticeable change is in Run 0 when we add prefetching. Without prefetching, the page fault migration time is included in the kernel time, which is why the baseline is so much slower than every other variant. However, once the data is resident on the GPU, all variants converge to the same performance.
+
+Building on top of that, **`PREFETCH_OUT` and `MEM_ADVISE` add nothing measurable here.** `out` is only a few KB, and `asum` is just one read. Memory advice pays off for reuse or contention patterns, but for this project we don't have either of those.
+
+**Block size barely matters once the grid is sized for occupancy.** Going from 256 to 1024 threads per block didn't make the kernel meaningfully faster (~0.48 ms for $N = 2^{24}$). The kernel is bandwidth-bound and the reduction tree only runs once per block, so the extra threads have nothing to speed up. This goes against the intuition we took from the aforementioned slide deck from Nvidia.
 
 ## Conclusion
