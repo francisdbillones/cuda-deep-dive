@@ -42,6 +42,7 @@ $$
 | | **$2^{26}$** | 204.80 ms | 100.40 ms (2.04x) | 59.60 ms (3.44x) | 44.80 ms (4.57x) | 1.960 ms (104.5x) | 1.968 ms (104.1x) | 1.973 ms (103.8x) | 1.960 ms (104.5x) |
 | | **$2^{28}$** | 819.20 ms | 401.60 ms (2.04x) | 238.40 ms (3.44x) | 179.20 ms (4.57x) | 8.100 ms (101.1x) | 8.143 ms (100.6x) | 8.128 ms (100.8x) | 8.080 ms (101.4x) |
 
+
 ### SIMD vs SIMT
 For our SIMD code, all we had to be responsible for was adapting the code to take advantage of data dependencies. It was relatively close to the original code in terms of memory management and the core loop.
 
