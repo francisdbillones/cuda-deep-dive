@@ -49,9 +49,6 @@ This means that, while properly taking advantage of SIMT reaps great rewards in 
 ### How block size affects execution time and recommendation
 Across all tested block sizes (256, 512, and 1024 threads per block), the block size had virtually no effect on steady-state kernel execution time (~0.48 ms for $2^{24}$, ~1.98 ms for $2^{26}$, and ~8.10 ms for $2^{28}$)
 
-Since ASUM has low arithmetic intensity, the computation is strictly memory bandwidth bound. The GPU completely saturates its PCIe and VRAM memory channels at block size 256 (160 active grid blocks across 40 Streaming Multiprocessors on the Tesla T4). Pushing thread density higher to 512 or 1024 threads per block yields no performance gain.
-
-We recommend 256 threads per block since it fully saturates GPU memory bandwidth while keeping shared memory allocation and register pressure per SM low.
 
 ### Is prefetching always recommended, or should CUDA manage memory?
 We can see that the code that defers memory management to CUDA performs on par with the code that manually prefetches after Run 0, because the memory transfer only happens during Run 0. For use cases wherein memory transfers are infrequent, it can make sense to let CUDA manage memory to keep the code simpler and easier to maintain. In cases where memory transfers are frequent and take up a significant proportion of runtime, it makes more sense to prefetch.
