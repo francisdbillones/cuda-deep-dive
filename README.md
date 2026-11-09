@@ -100,7 +100,7 @@ We can see that the code that defers memory management to CUDA performs on par w
 
 ### Problems
 
-We took parallel reduction kernel from this [https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf](slide deck from Nvidia), but it wasn't adapted for `blockSize >= 1024`. We added an additional step to the code to account for the possibility of `blockSize >= 1024`.
+We took parallel reduction kernel from this [slide deck from Nvidia](https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf), but it wasn't adapted for `blockSize >= 1024`. We added an additional step to the code to account for the possibility of `blockSize >= 1024`.
 
 
 ### AHA Moments
