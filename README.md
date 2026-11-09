@@ -38,17 +38,18 @@ $$
 | CUDA Prefetch+page creation |  |  |
 | CUDA Prefetch+Page creation+memadvise |  |  |
 
-### SIMD vs SIMT in handling parallelism
+### SIMD vs SIMT
+For our SIMD code, all we had to be responsible for was adapting the code to take advantage of data dependencies. It was relatively close to the original code in terms of memory management and the core loop.
 
-### PROS and CONS of using SIMD and SIMT
+For SIMT however, we had to be responsible for memory management and syncing state between threads. The proportion of the codebase in charge of the actual problem becomes smaller.
+
+This means that, while properly taking advantage of SIMT reaps great rewards in latency and throughput (as demonstrated by the speedup), it results in a much more complex and harder to refactor codebase.
 
 ### How block size affects execution time and recommendation
 
 
 ### Is prefetching always recommended, or should CUDA manage memory?
 
-
-### SIMD vs SIMT
 
 ## Problems Encountered and AHA Moments
 
