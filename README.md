@@ -22,6 +22,15 @@ $$
 | # of runs | 30 
 
 ## Program Output
+![variant21_output](output/var2_1.png)
+![variant22_output](output/var2_2.png)
+![variant31_output](output/var3_1.png)
+![variant32_output](output/var3_2.png)
+![variant41_output](output/var4_1.png)
+![variant42_output](output/var4_2.png)
+![variant51_output](output/var5_1.png)
+![variant52_output](output/var5_2.png)
+
 
 ## Analysis
 
