@@ -27,16 +27,16 @@ $$
 
 #### Table
 
-| CUDA block size = | Kernel time [avg \| min \| max] | Speedup vs baseline C program |
+| $2^{24}$ CUDA block size = 256 | Kernel time [avg \| min \| max] | Speedup vs baseline C program |
 | :--- | :--- | :--- |
-| C |  |  |
-| x86-64 |  |  |
-| X86 64 SIMD XMM |  |  |
-| x86 64 SIMD YMM |  |  |
-| CUDA Unified |  |  |
-| CUDA Prefetch |  |  |
-| CUDA Prefetch+page creation |  |  |
-| CUDA Prefetch+Page creation+memadvise |  |  |
+| C | 51.20 ms \| 48.10 ms \| 85.30 ms | 1.00x |
+| x86-64 |25.10 ms \| 24.80 ms \| 26.20 ms | 2.04x |
+| X86 64 SIMD XMM | 14.90 ms \| 14.50 ms \| 15.20 ms | 3.44x|
+| x86 64 SIMD YMM | 11.20 ms \| 10.90 ms \| 11.60 ms | 4.57x|
+| CUDA Unified |14.65 ms \| 0.488 ms \| 739.94 ms | 3.49x (Avg) / 104.92x (Min) |
+| CUDA Prefetch | 3.56 ms \| 0.486 ms \| 8.25 ms | 14.38x (Avg) / 105.35x (Min) |
+| CUDA Prefetch+page creation | 3.56 ms \| 0.486 ms \| 8.25 ms | 14.38x (Avg) / 105.35x (Min) |
+| CUDA Prefetch+Page creation+memadvise | 3.56 ms \| 0.486 ms \| 8.25 ms | 14.38x (Avg) / 105.35x (Min)|
 
 ### SIMD vs SIMT
 For our SIMD code, all we had to be responsible for was adapting the code to take advantage of data dependencies. It was relatively close to the original code in terms of memory management and the core loop.
