@@ -49,6 +49,7 @@ This means that, while properly taking advantage of SIMT reaps great rewards in 
 
 
 ### Is prefetching always recommended, or should CUDA manage memory?
+We can see that the code that defers memory management to CUDA performs on par with the code that manually prefetches after Run 0, because the memory transfer only happens during Run 0. For use cases wherein memory transfers are infrequent, it can make sense to let CUDA manage memory to keep the code simpler and easier to maintain. In cases where memory transfers are frequent and take up a significant proportion of runtime, it makes more sense to prefetch.
 
 
 ## Problems Encountered and AHA Moments
